@@ -1,5 +1,5 @@
-import { groq } from 'next-sanity';
 import { client } from '../../sanity/lib/client';
+import { groq } from 'next-sanity';
 import { type TypedObject } from 'sanity';
 
 interface Article {
@@ -17,5 +17,17 @@ export async function getArticles(): Promise<Article[]> {
       title,
       content,
     }`,
+  );
+}
+
+export async function getArticle(id: string): Promise<Article> {
+  return client.fetch(
+    groq`*[_type == "article" && _id == $id][0]{
+      _id,
+      _createdAt,
+      title,
+      content,
+    }`,
+    { id },
   );
 }
