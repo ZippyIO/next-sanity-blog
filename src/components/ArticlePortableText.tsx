@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ArticlePortableText = ({ block }: Props) => (
-  <div className="max-w-prose space-y-4">
+  <div className="max-w-prose space-y-4 text-zinc-700">
     <PortableText value={block} />
   </div>
 );

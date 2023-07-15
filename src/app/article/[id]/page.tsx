@@ -12,15 +12,20 @@ const ArticlePage = async ({ params }: Props) => {
   const article = await getArticle(id);
 
   return (
-    <article className="rounded-md bg-zinc-100 p-4 shadow-md">
-      <div className="mb-2">
-        <h3 className="text-2xl font-bold">{article.title}</h3>
-        <p className="text-xs text-zinc-600">
-          {format(parseISO(article._createdAt), 'dd/MM/yyyy')}
-        </p>
-      </div>
-      <ArticlePortableText block={article.content} />
-    </article>
+    <main className="flex min-h-screen w-full flex-col items-center pt-8">
+      <article className="">
+        <div className="mb-2">
+          <p className="text-sm font-bold text-red-400">
+            {format(parseISO(article._createdAt), 'dd/MM/yyyy')}
+          </p>
+          <h1 className="bg-gradient-to-r from-sky-500 via-violet-600 to-indigo-500 bg-clip-text pb-2 text-5xl font-bold text-transparent">
+            {article.title}
+          </h1>
+        </div>
+        <div className="mb-2 border-b-2 border-zinc-300" />
+        <ArticlePortableText block={article.content} />
+      </article>
+    </main>
   );
 };
 
