@@ -13,7 +13,8 @@ export const articleSchema = defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'string',
+      type: 'array',
+      of: [{ type: 'block' }],
     }),
   ],
 });
